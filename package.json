@@ -3,9 +3,10 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts",
-    "build": "bun build.ts",
-    "start": "bun dist/index.js"
+    "build:lib": "rustc --crate-type cdylib src/libs/main.rs",
+    "dev": "bun run build:lib && bun --hot src/index.ts",
+    "build": "bun run build:lib",
+    "start": "bun run src/index.ts"
   },
   "dependencies": {
     "elysia": "latest"
